@@ -60,6 +60,10 @@ class App:
         self.bottle.mount('/api', tarefa_controller_instance.app)
 
 
+        @self.bottle.route('/static/<filepath:path>')
+        def server_static(filepath):
+            return static_file(filepath, root='./static')
+    
     def run(self):
         self.setup_routes()
         
