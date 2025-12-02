@@ -1,128 +1,53 @@
 [
     {
         "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
+        "nome": "Fazer exercícios",
+        "descricao": "Resolver listas de lógica",
         "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 4,
-        "nome": "Estudar python",
-        "descricao": "Toda quinta feira de noite",
-        "isConcluida": false,
-        "prioridade": "Alta"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exerc\u00edcios",
-        "descricao": "Resolver listas de l\u00f3gica",
-        "isConcluida": true,
-        "prioridade": "M\u00e9dia"
-    },
-    {
-        "id": 3,
-        "nome": "Ler artigos",
-        "descricao": "Ler sobre APIs REST",
-        "isConcluida": false,
-        "prioridade": "Baixa"
+        "prioridade": "Média",
+        "data_vencimento": null,
+        "data_hora_inicio": null,
+        "data_hora_fim": null
     },
     {
         "id": 5,
         "nome": "joaozinho",
         "descricao": "kfjakfjkf",
+        "isConcluida": true,
+        "prioridade": "Baixa",
+        "data_vencimento": null,
+        "data_hora_inicio": null,
+        "data_hora_fim": null
+    },
+    {
+        "id": 6,
+        "nome": "estudar fisica",
+        "descricao": "",
         "isConcluida": false,
+        "prioridade": "Baixa",
+        "data_vencimento": "2025-12-03",
+        "data_hora_inicio": null,
+        "data_hora_fim": null
+    },
+    {
+        "id": 645680533,
+        "nome": "calculo 2",
+        "descricao": "prova",
+        "isConcluida": false,
+        "prioridade": "MÃ©dia",
+        "data_vencimento": "2025-11-30",
+        "data_hora_inicio": "2025-11-30T02:00",
+        "data_hora_fim": "2025-11-30T04:00"
+    },
+    {
+        "id": 2208606355,
+        "nome": "calculo 3",
+        "descricao": "projeto",
+        "isConcluida": false,
+        "prioridade": "MÃ©dia",
+        "data_vencimento": "2025-12-19",
+        "data_hora_inicio": "2025-12-19T03:06",
+        "data_hora_fim": "2025-12-19T04:06"
         "prioridade": "Baixa"
     },
     {
