@@ -1,5 +1,5 @@
 body {
-    background: #0a1f33;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b, 100%);
     font-family: Arial;
     display: flex;
     justify-content: center;
@@ -18,17 +18,20 @@ body {
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+    font-size: 15px;
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
+    outline: none;
     border: none;
+    background: #f8fafc;
 }
 
 button {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
-    background: #1e90ff;
+    background: green;
     color: white;
     border: none;
     border-radius: 6px;
