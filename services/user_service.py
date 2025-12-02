@@ -1,3 +1,4 @@
+
 from bottle import request
 from models.user import UserModel, User
 
@@ -49,6 +50,12 @@ class UserService:
             user.password = password
         self.user_model.update_user(user)
 
+    def authenticate(self, email, password):
+        users = self.user_model.get_all()
+        for user in users:
+            if user.email == email and user.password == password:
+                return user
+        return None
 
     def delete_user(self, user_id):
         self.user_model.delete_user(user_id)
