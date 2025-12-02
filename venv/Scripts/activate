@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\kauan\Downloads\epf-python-bottle-template-main\epf-python-bottle-template-main\venv"
+VIRTUAL_ENV="C:\Users\kauan\OneDrive\Documentos\Github\epf-pyhton-bottle-template-main\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

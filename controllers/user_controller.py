@@ -1,6 +1,7 @@
 from bottle import Bottle, request
 from .base_controller import BaseController
 from services.user_service import UserService
+from models.user import User
 
 class UserController(BaseController):
     def __init__(self, app):
@@ -27,8 +28,16 @@ class UserController(BaseController):
         if request.method == 'GET':
             return self.render('user_form', user=None, action="/users/add")
         else:
-            # POST - salvar usuário
-            self.user_service.save()
+            error = self.user_service.save()
+            if error:
+                temp_user = User(
+                    id=None,
+                    name = request.forms.get('name'),
+                    email = request.forms.get('email'),
+                    birthdate = request.forms.get('birthdate'),
+                    password= ""
+                )
+                return self.render('user_form', user=temp_user, action="/users/add", error=error)
             self.redirect('/users')
 
 
@@ -39,10 +48,26 @@ class UserController(BaseController):
 
         if request.method == 'GET':
             return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
-        else:
-            # POST - salvar edição
-            self.user_service.edit_user(user)
-            self.redirect('/users')
+        
+        form_data = {
+            "name": request.forms.get('name'),
+            "email": request.forms.get('email'),
+            "birthdate": request.forms.get('birthdate'),
+            "password": request.forms.get('password'),
+            "password_confirm": request.forms.get('password_confirm')
+        }
+
+        error = self.user_service.edit_user(user_id,form_data)
+        if error:
+            temp_user = User(
+                id=user_id,
+                name=form_data["name"],
+                email=form_data["email"],
+                birthdate=form_data["birthdate"],
+                password=""
+            )
+            return self.render('user_form', user=temp_user, action=f"/users/edit/{user_id}", error=error)
+        self.redirect('/users')
 
 
     def delete_user(self, user_id):
