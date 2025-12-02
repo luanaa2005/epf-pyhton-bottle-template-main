@@ -1,4 +1,5 @@
 from bottle import Bottle
+from bottle import Bottle, static_file
 from config import Config
 from models.tarefa import TarefaModel, Tarefa
 from services.tarefa_service import TarefaService
@@ -20,6 +21,10 @@ class App:
         print('🚀 Inicializa rotas!')
         init_controllers(self.bottle)
 
+        @self.bottle.route('/static/<filepath:path>')
+        def server_static(filepath):
+            return static_file(filepath, root='./static')
+    
     def run(self):
         self.setup_routes()
         self.bottle.run(
