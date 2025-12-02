@@ -1,48 +1,66 @@
-body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b, 100%);
-    font-family: Arial;
+.login-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: white;
+    min-height: 80vh; 
+    padding: 20px;
+    width: 100%;
 }
+
 
 .login-box {
-    background: #112b45;
-    padding: 30px;
-    border-radius: 10px;
-    width: 350px;
-    box-shadow: 0 0 15px #0008;
+    background: rgba(17, 43, 69, 0.75); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; 
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    font-size: 15px;
-    margin-top: 10px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    background: #f8fafc;
+.login-box h2 {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-button {
+.login-box input {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    text-align: left; 
+}
+
+.btn-login-submit {
     width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    background: green;
+    padding: 15px;
+    background: #3b82f6;
     color: white;
     border: none;
-    border-radius: 6px;
-    font-size: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
-.error {
-    background: #ff5c5c;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 10px;
+.btn-login-submit:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
 }
 
+.login-error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}

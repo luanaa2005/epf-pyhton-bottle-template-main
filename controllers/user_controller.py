@@ -92,3 +92,6 @@ class UserController(BaseController):
 
 user_routes = Bottle()
 user_controller = UserController(user_routes)
+
+def load_controller():
+    return UserController(user_routes)
