@@ -3,6 +3,9 @@
 <section class="tasks-section">
     <div class="section-header">
         <h1 class="section-title"><i class="fas fa-tasks"></i> Minhas Tarefas</h1>
+        <a href="/tarefas/agenda" class="btn btn-secondary" style="margin-right: 10px;">
+            <i class="far fa-calendar-alt"></i> Ver como Agenda
+        </a>
         <a href="/tarefas/add" class="btn btn-primary">
             <i class="fas fa-plus"></i> Nova Tarefa
         </a>

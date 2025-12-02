@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import datetime, date 
 from models.tarefa import Tarefa 
 
 class TarefaService:
@@ -40,7 +40,36 @@ class TarefaService:
             setattr(t, 'duration_hours', duration) 
             
         return tarefas
+    
+    
+    def get_tarefas_agrupadas_por_dia(self):
+        
+        tarefas = self.get_tarefas() 
+    
+        tarefas_por_dia = {}
 
+        for tarefa in tarefas:
+            data_vencimento_str = tarefa.data_vencimento
+            if data_vencimento_str:
+                try:
+                    data_obj = datetime.strptime(data_vencimento_str, "%Y-%m-%d").date()
+
+                    chave_dia = data_obj
+                    
+                    if chave_dia not in tarefas_por_dia:
+                        tarefas_por_dia[chave_dia] = []
+                    duration = self._calculate_duration_hours(tarefa.data_hora_inicio, tarefa.data_hora_fim)
+                    setattr(tarefa, 'duration_hours', duration)
+                    
+                    tarefas_por_dia[chave_dia].append(tarefa)
+                
+                except ValueError:
+                    continue
+            
+        
+        return tarefas_por_dia
+
+    
     def add(self, nome, descricao, prioridade, data_vencimento, data_hora_inicio, data_hora_fim):
         novo_id = self._generate_unique_id()
         tarefa = Tarefa(
