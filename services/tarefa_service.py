@@ -1,32 +1,84 @@
-from bottle import request
-from models.tarefa import TarefaModel, Tarefa
+import uuid
+from datetime import datetime
+from models.tarefa import Tarefa 
 
 class TarefaService:
-    def __init__(self, model: TarefaModel):
+    def __init__(self, model):
         self.model = model
 
-    def get_all(self):
+    def _calculate_duration_hours(self, start_dt_str, end_dt_str):
+        """Calcula a diferença em horas entre duas strings de data/hora."""
+        if not start_dt_str or not end_dt_str:
+            return None
+        try:
+            start_dt = datetime.strptime(start_dt_str, '%Y-%m-%dT%H:%M')
+            end_dt = datetime.strptime(end_dt_str, '%Y-%m-%dT%H:%M')
+            
+            duration = end_dt - start_dt
+            
+            total_hours = duration.total_seconds() / 3600
+            
+            return round(total_hours, 2)
+            
+        except ValueError:
+            return None 
+
+    def get_tarefas(self):
         return self.model.get_all()
-
-    def save(self):
-        last_id = max([t.id for t in self.model.get_all()], default=0)
-        new_id = last_id + 1
-
-        nome = request.forms.get("nome")
-        descricao = request.forms.get("descricao")
-        prioridade = request.forms.get("prioridade")
-        isConcluida = request.forms.get("isConcluida") == "true"
-
-        tarefa = Tarefa(new_id, nome, descricao, isConcluida, prioridade)
-        self.model.add_tarefa(tarefa)
-
-    def get_concluidas(self):
-        return self.model.get_concluidas()
-    
-    def delete(self, tarefa_id):
-        tarefa_id = int(tarefa_id)
-        self.model.tarefas = [t for t in self.model.tarefas if t.id != tarefa_id]
-        self.model._save()
 
     def get_by_id(self, tarefa_id):
         return self.model.get_by_id(tarefa_id)
+    
+    def get_filtered_and_sorted(self, status=None, sort_by='id'):
+        """
+        Retorna tarefas filtradas e ordenadas, adicionando o atributo de duração.
+        """
+        tarefas = self.model.get_filtered_and_sorted(status, sort_by)
+        
+        for t in tarefas:
+            duration = self._calculate_duration_hours(t.data_hora_inicio, t.data_hora_fim)
+            setattr(t, 'duration_hours', duration) 
+            
+        return tarefas
+
+    def add(self, nome, descricao, prioridade, data_vencimento, data_hora_inicio, data_hora_fim):
+        novo_id = self._generate_unique_id()
+        tarefa = Tarefa(
+            id=novo_id, 
+            nome=nome, 
+            descricao=descricao, 
+            isConcluida=False, 
+            prioridade=prioridade, 
+            data_vencimento=data_vencimento,
+            data_hora_inicio=data_hora_inicio,
+            data_hora_fim=data_hora_fim
+        )
+        self.model.add_tarefa(tarefa)
+        return tarefa
+
+    def update(self, tarefa_id, nome, descricao, prioridade, data_vencimento, data_hora_inicio, data_hora_fim):
+        tarefa = self.model.get_by_id(tarefa_id)
+        if tarefa:
+            tarefa.nome = nome
+            tarefa.descricao = descricao
+            tarefa.prioridade = prioridade
+            tarefa.data_vencimento = data_vencimento
+            tarefa.data_hora_inicio = data_hora_inicio
+            tarefa.data_hora_fim = data_hora_fim
+            self.model._save()
+            return True
+        return False
+
+    def delete(self, tarefa_id):
+        self.model.delete(tarefa_id)
+
+    def toggle_concluida(self, tarefa_id, new_status):
+        tarefa = self.model.get_by_id(tarefa_id)
+        if tarefa:
+            tarefa.isConcluida = new_status
+            self.model._save()
+            return True
+        return False
+
+    def _generate_unique_id(self):
+        return int(uuid.uuid4().hex[:8], 16)

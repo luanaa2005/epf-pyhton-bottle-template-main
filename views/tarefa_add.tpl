@@ -1,91 +1,38 @@
-%rebase('layout', title='Adicionar Tarefa')
+%rebase('layout', title='Adicionar Nova Tarefa')
 
 <section class="tasks-section">
-    <div class="section-header">
-        <h1 class="section-title">
-            <i class="fas fa-plus-circle"></i> Nova Tarefa
-        </h1>
-        <a href="/tarefas" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Voltar
-        </a>
-    </div>
+    <h1>Adicionar Nova Tarefa</h1>
 
-    <div class="form-container">
-        <form action="/tarefas/add" method="post" class="styled-form">
+    <form action="/tarefas/add" method="post">
+        
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
 
-            <div class="form-group">
-                <label for="nome">Nome da Tarefa</label>
-                <input type="text" id="nome" name="nome" required placeholder="Ex: Estudar Python">
-            </div>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"></textarea>
 
-            <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <textarea id="descricao" name="descricao" rows="3" placeholder="Detalhes da tarefa"></textarea>
-            </div>
+        <label for="prioridade">Prioridade:</label>
+        <select id="prioridade" name="prioridade">
+            <option value="Alta">Alta</option>
+            <option value="Média" selected>Média</option>
+            <option value="Baixa">Baixa</option>
+        </select>
+        
+        <div class="form-group">
+            <label for="data_vencimento">Prazo Final (Data)</label>
+            <input type="date" id="data_vencimento" name="data_vencimento">
+        </div>
+        
+        <div class="form-group">
+            <label for="hora_inicio_input">Início da Tarefa (Hora)</label>
+            <input type="time" id="hora_inicio_input" name="hora_inicio_input">
+        </div>
 
-            <div class="form-group">
-                <label for="prioridade">Prioridade</label>
-                <select id="prioridade" name="prioridade" required>
-                    <option value="Baixa">Baixa</option>
-                    <option value="Média">Média</option>
-                    <option value="Alta">Alta</option>
-                </select>
-            </div>
-
-            <div class="form-group checkbox-group">
-                <label>
-                    <input type="checkbox" name="isConcluida">
-                    Marcar como concluída
-                </label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-save"></i> Salvar Tarefa
-            </button>
-        </form>
-    </div>
+        <div class="form-group">
+            <label for="hora_fim_input">Fim da Tarefa (Hora)</label>
+            <input type="time" id="hora_fim_input" name="hora_fim_input">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
+        <a href="/tarefas" class="btn btn-secondary">Cancelar</a>
+    </form>
 </section>
-
-<style>
-    .form-container {
-        margin-top: 20px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        background: #fff;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .styled-form .form-group {
-        margin-bottom: 20px;
-    }
-
-    .styled-form label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: bold;
-    }
-
-    .styled-form input,
-    .styled-form select,
-    .styled-form textarea {
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 1rem;
-    }
-
-    .checkbox-group label {
-        font-weight: normal;
-    }
-
-    .btn {
-        padding: 10px 18px;
-        border-radius: 8px;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-</style>

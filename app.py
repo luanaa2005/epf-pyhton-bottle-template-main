@@ -1,7 +1,10 @@
-from bottle import Bottle
+from bottle import Bottle, BaseRequest 
 from config import Config
 from models.tarefa import TarefaModel, Tarefa
 from services.tarefa_service import TarefaService
+
+
+BaseRequest.default_content_type = 'application/x-www-form-urlencoded; charset=UTF-8'
 
 class App:
     def __init__(self):
@@ -11,10 +14,6 @@ class App:
         self.tarefa_model = TarefaModel()
         self.tarefa_service = TarefaService(self.tarefa_model)
 
-        self.tarefa_model.add_tarefa(Tarefa(1, "Estudar Python", "Revisar Bottle e Flask", False, "Alta"))
-        self.tarefa_model.add_tarefa(Tarefa(2, "Fazer exercícios", "Resolver listas de lógica", True, "Média"))
-        self.tarefa_model.add_tarefa(Tarefa(3, "Ler artigos", "Ler sobre APIs REST", False, "Baixa"))
-
     def setup_routes(self):
         from controllers import init_controllers
         print('🚀 Inicializa rotas!')
@@ -22,6 +21,8 @@ class App:
 
     def run(self):
         self.setup_routes()
+        
+       
         self.bottle.run(
             host=self.config.HOST,
             port=self.config.PORT,
