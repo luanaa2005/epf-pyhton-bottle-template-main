@@ -1,14 +1,24 @@
-<form method="POST" action="/login">
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
 
-    %if error:
-    <div class="ERRO">{{error}}</p>
+<div class="login-box">
+
+    % if error:
+        <div class="error">{{error}}</div>
     % end
 
-    <label>Email:</label>
-    <input type="email" name="email" required>
+    <form method="POST">
+        <h2>Login</h2>
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Senha">
+        <button type="submit">Entrar</button>
+    </form>
 
-    <label>Senha:</label>
-    <input type="password" name="password" required>
+</div>
 
-    <button type="submit">Entrar</button>
-</form>
+</body>
+</html>
