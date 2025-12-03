@@ -1,3 +1,4 @@
+from bottle import Bottle
 from .tarefa_controller import tarefa_routes
 
 def init_controllers(app: Bottle):

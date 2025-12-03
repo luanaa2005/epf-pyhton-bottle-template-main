@@ -1,8 +1,8 @@
-from bottle import Bottle,template
+from bottle import Bottle, template
 from .base_controller import BaseController
 
 class HomeController(BaseController):
-    def __init__(self,app):
+    def __init__(self, app):
         super().__init__(app)
         self.setup_routes()
     
@@ -11,7 +11,7 @@ class HomeController(BaseController):
 
     def index(self):
         return template('home')
-    
+
 home_routes = Bottle()
 
 def load_controller():

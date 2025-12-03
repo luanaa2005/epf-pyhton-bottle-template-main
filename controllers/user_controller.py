@@ -6,12 +6,9 @@ from models.user import User
 class UserController(BaseController):
     def __init__(self, app):
         super().__init__(app)
-
-        self.setup_routes()
         self.user_service = UserService()
+        self.setup_routes()
 
-
-    # Rotas User
     def setup_routes(self):
         self.app.route('/users', method='GET', callback=self.list_users)
         self.app.route('/users/add', method=['GET', 'POST'], callback=self.add_user)
@@ -19,11 +16,9 @@ class UserController(BaseController):
         self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user)
         self.app.route('/login', method=['GET', 'POST'], callback=self.login)
 
-
     def list_users(self):
         users = self.user_service.get_all()
         return self.render('users', users=users)
-
 
     def add_user(self):
         if request.method == 'GET':
@@ -33,14 +28,14 @@ class UserController(BaseController):
             if error:
                 temp_user = User(
                     id=None,
-                    name = request.forms.get('name'),
-                    email = request.forms.get('email'),
-                    birthdate = request.forms.get('birthdate'),
-                    password= ""
+                    name=request.forms.get('name'),
+                    email=request.forms.get('email'),
+                    birthdate=request.forms.get('birthdate'),
+                    password=""
                 )
                 return self.render('user_form', user=temp_user, action="/users/add", error=error)
-            self.redirect('/users')
-
+            
+            return self.redirect('/users')
 
     def edit_user(self, user_id):
         user = self.user_service.get_by_id(user_id)
@@ -58,7 +53,7 @@ class UserController(BaseController):
             "password_confirm": request.forms.get('password_confirm')
         }
 
-        error = self.user_service.edit_user(user_id,form_data)
+        error = self.user_service.edit_user(user_id, form_data)
         if error:
             temp_user = User(
                 id=user_id,
@@ -68,12 +63,12 @@ class UserController(BaseController):
                 password=""
             )
             return self.render('user_form', user=temp_user, action=f"/users/edit/{user_id}", error=error)
-        self.redirect('/users')
-
+        
+        return self.redirect('/users')
 
     def delete_user(self, user_id):
         self.user_service.delete_user(user_id)
-        self.redirect('/users')
+        return self.redirect('/users')
 
     def login(self):
         if request.method == 'GET':
@@ -87,11 +82,9 @@ class UserController(BaseController):
             return self.render('login', error="Email ou senha incorretos")
 
         request.environ['user'] = user
-
-        self.redirect('/users')
+        return self.redirect('/users')
 
 user_routes = Bottle()
-user_controller = UserController(user_routes)
 
 def load_controller():
     return UserController(user_routes)
