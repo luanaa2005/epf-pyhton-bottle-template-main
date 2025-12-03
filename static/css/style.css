@@ -1,220 +1,133 @@
-/* static/css/style.css */
-
-/* --- 1. CONFIGURAÇÃO GERAL E FUNDO (AZUL ESCURO) --- */
-:root {
-    --color-primary: #1e3a8a; /* Azul escuro principal */
-    --color-secondary: #3b82f6; /* Azul claro para destaque */
-    --color-background: #0f172a; /* Fundo muito escuro */
-    --color-card-bg: #1e293b; /* Fundo do card */
-    --color-text-light: #f1f5f9; /* Texto claro */
-    --color-text-dim: #94a3b8; /* Texto cinza */
-    --color-success: #10b981;
-    --color-danger: #ef4444;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    color: var(--color-text-light);
-}
 
 body {
-    background-color: var(--color-background);
-    line-height: 1.6;
-    padding: 20px;
-}
-
-/* Transição para a animação de opacidade no main.js */
-body.fade-in {
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* --- 2. LAYOUT E CONTEÚDO PRINCIPAL --- */
-#container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding-top: 20px;
-}
-
-h1 {
-    text-align: center;
-    color: var(--color-secondary);
-    margin-bottom: 30px;
-    font-weight: 700;
-}
-
-h2 {
-    color: var(--color-text-light);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    border-bottom: 2px solid var(--color-primary);
-    padding-bottom: 5px;
-}
-
-/* --- 3. ESTILO DOS CARDS E FORMULÁRIO --- */
-.card {
-    background-color: var(--color-card-bg);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    margin-bottom: 30px;
-}
-
-/* Form */
-#formTarefa label {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: var(--color-text-dim);
-}
-
-#formTarefa input[type="text"],
-#formTarefa textarea,
-#formTarefa select,
-#formTarefa input[type="date"],
-#formTarefa input[type="datetime-local"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #374151;
-    border-radius: 6px;
-    background-color: #1f2937;
-    color: var(--color-text-light);
-    font-size: 1rem;
-}
-
-#formTarefa textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-#formTarefa button {
-    background-color: var(--color-secondary);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    transition: background-color 0.3s;
-    width: 100%;
-    margin-top: 10px;
-}
-
-#formTarefa button:hover {
-    background-color: #2563eb;
-}
-
-/* --- 4. LISTA DE TAREFAS (CARDS INDIVIDUAIS) --- */
-
-#listaTarefas ul {
-    list-style: none;
+    margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0a1f33 0%, #0f2742 100%);
+    color: #f1f5f9;
+    min-height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: stretch; 
 }
 
-#listaTarefas li {
-    display: flex; /* Permite que checkbox e conteúdo fiquem na mesma linha */
-    align-items: flex-start;
-    padding: 15px;
-    background-color: var(--color-background); /* Fundo da tarefa é mais escuro que o card */
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s, background-color 0.2s;
+
+.main-nav {
+    background-color: #1e293b; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 70px;
+    
+    /* FIXAR NO TOPO */
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+    
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-#listaTarefas li:hover {
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3b82f6;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: #fff;
     transform: translateY(-2px);
 }
 
-/* Checkbox (toggle) */
-.toggle-concluida {
-    margin-right: 15px;
-    margin-top: 4px; /* Alinha o checkbox com o texto do cabeçalho */
-    min-width: 20px;
-    height: 20px;
-    cursor: pointer;
+.logout {
+    color: #ef4444 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 6px 15px;
+    border-radius: 20px;
+    background: rgba(239, 68, 68, 0.1);
 }
 
-/* Conteúdo da Tarefa */
-.tarefa-content {
+.logout:hover {
+    background: #ef4444;
+    color: white !important;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
     flex-grow: 1;
+    display: block; 
 }
 
-.tarefa-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
+.card, .form-section, .users-section, .tasks-section {
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Descrição e detalhes */
-.descricao-text {
-    display: block;
-    color: var(--color-text-dim);
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-}
+h1 { text-align: center; color: #3b82f6; margin-bottom: 30px; }
+h2 { color: #f1f5f9; border-bottom: 2px solid #1e3a8a; padding-bottom: 10px; margin-bottom: 20px; }
 
-.tarefa-content span {
-    font-size: 0.85rem;
-    color: var(--color-text-dim);
-}
+/* Botões */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; cursor: pointer; border: none; transition: 0.2s; }
+.btn-primary { background-color: #3b82f6; color: white; }
+.btn-primary:hover { background-color: #2563eb; transform: translateY(-2px); }
+.btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #cbd5e1; }
+.btn-secondary:hover { border-color: white; color: white; }
+.btn-danger { background: rgba(239,68,68,0.1); color: #fca5a5; border: 1px solid rgba(239,68,68,0.2); }
+.btn-danger:hover { background: #ef4444; color: white; }
+.btn-sm { padding: 5px 10px; font-size: 0.85rem; }
 
-/* Tarefas Concluídas */
-li.concluida {
-    background-color: #161e2e; /* Fundo mais sutil para concluídas */
-    opacity: 0.7;
+input, select, textarea {
+    width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); color: white;
 }
+input:focus { outline: none; border-color: #3b82f6; }
 
-li.concluida .tarefa-content .tarefa-header span {
-    text-decoration: line-through;
-}
+.table-container { overflow-x: auto; }
+.styled-table { width: 100%; border-collapse: collapse; }
+.styled-table th { text-align: left; padding: 15px; color: #94a3b8; border-bottom: 2px solid rgba(255,255,255,0.1); }
+.styled-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.styled-table tr:hover { background-color: rgba(255,255,255,0.03); }
 
-/* --- 5. TAGS DE PRIORIDADE --- */
-
-.tag-alta, .tag-media, .tag-baixa {
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-right: 10px;
-    text-transform: uppercase;
-    color: white; /* Garante que o texto da tag é branco */
-}
-
-.tag-alta {
-    background-color: var(--color-danger); /* Vermelho */
-}
-
-.tag-media {
-    background-color: var(--color-secondary); /* Azul */
-}
-
-.tag-baixa {
-    background-color: var(--color-success); /* Verde */
-}
-
-/* --- 6. Rodapé --- */
-.card:last-of-type {
-    margin-bottom: 0;
-}
-
-/* Se você tem um rodapé, ele fica fora dos cards */
-#container > p {
-    text-align: center;
-    margin-top: 20px;
-    color: var(--color-text-dim);
-    font-size: 0.8rem;
-}
-
-/* Garante que o texto da mensagem "Nenhuma tarefa carregada" seja centralizado */
-#listaTarefas > p {
-    text-align: center;
-    color: var(--color-text-dim);
-    padding: 20px;
-}
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.priority-alta { color: #ef4444; font-weight: bold; background: rgba(239,68,68,0.1); padding: 2px 8px; border-radius: 4px; }
+.priority-media { color: #3b82f6; font-weight: bold; background: rgba(59,130,246,0.1); padding: 2px 8px; border-radius: 4px; }
+.priority-baixa { color: #10b981; font-weight: bold; background: rgba(16,185,129,0.1); padding: 2px 8px; border-radius: 4px; }

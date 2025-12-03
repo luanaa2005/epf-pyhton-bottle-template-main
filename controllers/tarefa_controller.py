@@ -11,7 +11,7 @@ class TarefaController(BaseController):
         self.setup_routes()
 
     def setup_routes(self):
-        self.app.route('/tarefas', method='GET', callback=self.list_tpl) 
+        self.app.route('/tarefas', method='GET', callback=self.list_tpl)  
         self.app.route('/tarefas/add', method='POST', callback=self.add) 
         self.app.route('/tarefas/add', method='GET', callback=self.add_form) 
         self.app.route('/tarefas/delete/<tarefa_id:int>', method=['POST'], callback=self.delete)
@@ -111,7 +111,7 @@ class TarefaController(BaseController):
                 return BaseResponse('Formato inválido', 400)
                 
             self.service.toggle_concluida(tarefa_id, new_status)
-            return {'status': 'success'}
+            return {'status': 'success', 'isConcluida': new_status}
         except Exception as e:
             print(f"Erro no toggle: {e}")
             return BaseResponse('Erro no servidor', 500)

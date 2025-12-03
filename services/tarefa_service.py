@@ -108,6 +108,6 @@ class TarefaService:
             self.model._save()
             return True
         return False
-
+    
     def _generate_unique_id(self):
         return int(uuid.uuid4().hex[:8], 16)
