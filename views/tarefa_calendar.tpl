@@ -15,7 +15,7 @@
 
     <div class="calendar-container">
         % if not tarefas_agrupadas:
-        <p>🎉 Nenhuma tarefa com prazo definido encontrada. Adicione uma para começar a agendar!</p>
+        <p> Nenhuma tarefa com prazo definido encontrada. Adicione uma para começar a agendar!</p>
         % end
 
         % for data_obj in sorted(tarefas_agrupadas.keys()):

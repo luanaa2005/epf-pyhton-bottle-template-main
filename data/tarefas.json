@@ -1,35 +1,5 @@
 [
     {
-        "id": 2,
-        "nome": "Fazer exercícios",
-        "descricao": "Resolver listas de lógica",
-        "isConcluida": true,
-        "prioridade": "Média",
-        "data_vencimento": null,
-        "data_hora_inicio": null,
-        "data_hora_fim": null
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exercícios",
-        "descricao": "Resolver listas de lógica",
-        "isConcluida": true,
-        "prioridade": "Média",
-        "data_vencimento": null,
-        "data_hora_inicio": null,
-        "data_hora_fim": null
-    },
-    {
-        "id": 2,
-        "nome": "Fazer exercícios",
-        "descricao": "Resolver listas de lógica",
-        "isConcluida": true,
-        "prioridade": "Média",
-        "data_vencimento": null,
-        "data_hora_inicio": null,
-        "data_hora_fim": null
-    },
-    {
         "id": 3,
         "nome": "Ler artigos",
         "descricao": "Ler sobre APIs REST",
@@ -74,10 +44,10 @@
         "nome": "estudar fisica",
         "descricao": "",
         "isConcluida": false,
-        "prioridade": "Baixa",
-        "data_vencimento": "2025-12-03",
-        "data_hora_inicio": null,
-        "data_hora_fim": null
+        "prioridade": "Alta",
+        "data_vencimento": "2025-12-04",
+        "data_hora_inicio": "2025-12-04T04:10",
+        "data_hora_fim": "2025-12-04T05:10"
     },
     {
         "id": 108172292,
@@ -128,5 +98,15 @@
         "data_vencimento": "2025-12-19",
         "data_hora_inicio": "2025-12-19T03:06",
         "data_hora_fim": "2025-12-19T04:06"
+    },
+    {
+        "id": 2636356620,
+        "nome": "Apresentar Projeto OO",
+        "descricao": "ApresentaÃ§Ã£o do projeto final de orientaÃ§Ã£o a objetos",
+        "isConcluida": false,
+        "prioridade": "Alta",
+        "data_vencimento": "2025-12-03",
+        "data_hora_inicio": "2025-12-03T11:00",
+        "data_hora_fim": "2025-12-03T12:00"
     }
 ]
